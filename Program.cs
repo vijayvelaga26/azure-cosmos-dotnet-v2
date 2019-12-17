@@ -15,7 +15,7 @@
     public class Program
     {
         private static readonly string databaseName = "c3";
-        private static readonly string collectionName = "final";
+        private static readonly string collectionName = "leases5";
 
         // Read config
         private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -72,22 +72,22 @@
         {
 
             // Below method creates 3 sample documents in the above collection. Please see below for document structure. 
-           // await CreateDocumentsAsync();
+           await CreateDocumentsAsync();
 
             // Below method prints all the documtnts in the collection. 
-           // await GetAllProducts();
+           await GetAllProducts();
 
 
-            // Below method returns item number and company of the documents which contain a specific value in the Tags property. 
-            await GetProducts();
+            //// Below method returns item number and company of the documents which contain a specific value in the Tags property. 
+            //await GetProducts();
 
-            // Below method is for deleting a given tag from a document using its item number and company
+            //// Below method is for deleting a given tag from a document using its item number and company
 
-            await DeleteProducts();
+            //await DeleteProducts();
 
 
-            // Below method returns the item number and company of the documents after the tag is deleted. 
-            await Finaltest();
+            //// Below method returns the item number and company of the documents after the tag is deleted. 
+            //await Finaltest();
 
         }
 
@@ -98,13 +98,13 @@
 
             Console.WriteLine("\n1.1 - Creating documents");
 
-            DocDBProduct newdoc = GetDocSample("7013374");
+            DocDBProduct newdoc = GetDocSample("7013374","test1");
             await client.CreateDocumentAsync(collectionUri, newdoc);
 
-            DocDBProduct newdoc1 = GetDocSample("7013375");
+            DocDBProduct newdoc1 = GetDocSample("7013375", "test2");
             await client.CreateDocumentAsync(collectionUri, newdoc1);
 
-            DocDBProduct newdoc2 = GetDocSample("7013376");
+            DocDBProduct newdoc2 = GetDocSample("7013376", "test3");
             await client.CreateDocumentAsync(collectionUri, newdoc2);
         }
 
@@ -194,7 +194,7 @@
 
 
 
-         private static DocDBProduct GetDocSample(string itemnumber)
+         private static DocDBProduct GetDocSample(string itemnumber, string ordername)
         {
             DocDBProduct newdoc = new DocDBProduct
             {
@@ -217,7 +217,16 @@
                 Certificate = "test2",
                  Done = true,
                  Published= true,
-                  Modified = false
+                  Modified = false,
+
+                    Items = new SalesOrderDetail[]
+                {
+                    new SalesOrderDetail
+                    {
+                        OrderName = ordername,
+                        
+                    }
+                }
 
             };
                        
@@ -236,7 +245,7 @@
             collectionDefinition.Id = collectionName;
 
             
-            collectionDefinition.PartitionKey.Paths.Add("/AccountNumber");
+            collectionDefinition.PartitionKey.Paths.Add("/_partitionKey");
 
             // Use the recommended indexing policy which supports range queries/sorting on strings
             collectionDefinition.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
@@ -245,7 +254,7 @@
             await client.CreateDocumentCollectionIfNotExistsAsync(
                 UriFactory.CreateDatabaseUri(databaseName),
                 collectionDefinition,
-                new RequestOptions { OfferThroughput = 1000 });
+                new RequestOptions { OfferThroughput = 400 });
         }
     }
 }

@@ -53,7 +53,20 @@
         public string Group { get; set; }
         [JsonProperty(PropertyName = "aswDescription")]
         public string Aswdescription { get; set; }
+
+        [JsonProperty(PropertyName = "sales order")]
+        public SalesOrderDetail[] Items { get; set; }
     }
+
+
+    public class SalesOrderDetail
+    {
+        [JsonProperty(PropertyName = "order name")]
+        public string OrderName { get; set; }
+       
+    }
+
+
 
 
     public class TagRemoveRequest
