@@ -88,7 +88,13 @@
         public string ItemNo { get; set; }
     }
 
-       
+    public class UpdateSales
+    {
+        public string OrderName { get; set; }
+        public string ItemNo { get; set; }
+        public string Company { get; set; }
+    }
+
 
 
 

@@ -262,3 +262,5 @@ C:\Users\M9600089\Desktop\prac final\azure-cosmos-dotnet-v2-master\azure-cosmos-
 C:\Users\M9600089\Desktop\prac final\azure-cosmos-dotnet-v2-master\azure-cosmos-dotnet-v2-master\samples\code-samples\Shared\obj\Debug\Shared.csproj.CopyComplete
 C:\Users\M9600089\Desktop\prac final\azure-cosmos-dotnet-v2-master\azure-cosmos-dotnet-v2-master\samples\code-samples\Shared\obj\Debug\DocumentDB.Samples.Shared.dll
 C:\Users\M9600089\Desktop\prac final\azure-cosmos-dotnet-v2-master\azure-cosmos-dotnet-v2-master\samples\code-samples\Shared\obj\Debug\DocumentDB.Samples.Shared.pdb
+C:\Users\vijay\Desktop\test1\azure-cosmos-dotnet-v2\Shared\obj\Debug\DocumentDB.Samples.Shared.dll
+C:\Users\vijay\Desktop\test1\azure-cosmos-dotnet-v2\Shared\obj\Debug\DocumentDB.Samples.Shared.pdb

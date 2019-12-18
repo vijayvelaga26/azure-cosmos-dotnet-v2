@@ -152,7 +152,10 @@
             }
         }
 
-
+        private static async Task UpdateSales()
+        {
+           
+        }
 
         private static List<DocDBProduct> GetProductsThatHaveTagFromDb(TagRequest request)
         {
@@ -194,6 +197,13 @@
 
 
 
+        public static void UpdateSalesFromDoc(UpdateSales updateSales)
+        {
+            DocDBProduct doc1 = GetProductByCompanyAndItemNumber(updateSales.ItemNo,updateSales.Company);            
+
+        }
+
+
          private static DocDBProduct GetDocSample(string itemnumber, string ordername)
         {
             DocDBProduct newdoc = new DocDBProduct
@@ -223,8 +233,7 @@
                 {
                     new SalesOrderDetail
                     {
-                        OrderName = ordername,
-                        
+                        OrderName = ordername                        
                     }
                 }
 
